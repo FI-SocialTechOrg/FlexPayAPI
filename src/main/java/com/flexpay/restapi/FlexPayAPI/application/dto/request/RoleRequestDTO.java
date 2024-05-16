@@ -14,4 +14,5 @@ public class RoleRequestDTO {
 
     @NotBlank(message = "type is mandatory")
     private String type;
+
 }

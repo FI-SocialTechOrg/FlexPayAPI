@@ -13,4 +13,5 @@ public class RoleResponseDTO {
     private int id;
 
     private String type;
+
 }
