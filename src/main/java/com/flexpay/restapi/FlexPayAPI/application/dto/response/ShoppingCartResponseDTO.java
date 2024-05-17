@@ -11,6 +11,6 @@ import lombok.*;
 public class ShoppingCartResponseDTO {
     private int id;
     private double total;
-    private Customer customer;
+    private CustomerResponseDTO customer;
     private ShoppingState shoppingState;
 }

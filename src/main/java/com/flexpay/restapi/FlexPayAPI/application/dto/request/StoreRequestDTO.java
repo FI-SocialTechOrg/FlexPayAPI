@@ -1,7 +1,7 @@
 package com.flexpay.restapi.FlexPayAPI.application.dto.request;
 
 
-import com.flexpay.restapi.FlexPayAPI.domain.entities.Account;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
