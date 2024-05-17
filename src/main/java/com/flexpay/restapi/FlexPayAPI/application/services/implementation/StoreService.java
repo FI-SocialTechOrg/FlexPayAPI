@@ -93,10 +93,8 @@ public class StoreService implements IStoreService {
 
 
     private StoreResponseDTO convertToCustomerResponseDTO(Store store) {
-        // Mapeo manual de Customer a CustomerResponseDTO
         StoreResponseDTO responseDTO = modelMapper.map(store, StoreResponseDTO.class);
 
-        // Mapeo manual de Account a AccountResponseDTO
         Account account = store.getAccount();
         AccountResponseDTO accountResponseDTO = AccountResponseDTO.builder()
                 .id(account.getId())
@@ -105,7 +103,6 @@ public class StoreService implements IStoreService {
                 .role(account.getRole())
                 .build();
 
-        // Asignar el accountResponseDTO al responseDTO
         responseDTO.setAccount(accountResponseDTO);
 
         return responseDTO;

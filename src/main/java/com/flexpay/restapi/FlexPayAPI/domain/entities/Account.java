@@ -19,7 +19,7 @@ public class Account {
     @Column(name = "email", length = 100, nullable = false)
     private String email;
 
-    @Column(name = "password", length = 100, nullable = false)
+    @Column(name = "password", length = 500, nullable = false)
     private String password;
 
     @Column(name = "userName", length = 75, nullable = false)

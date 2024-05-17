@@ -61,7 +61,7 @@ public class RoleService implements IRoleService {
         if (roleOptional.isEmpty()) {
             return new ApiResponse<>("Role not found", Estatus.ERROR, null);
         } else {
-            roleRepository.delete(roleOptional.get());
+            roleRepository.deleteById(id);
             return new ApiResponse<>("Role deleted successfully", Estatus.SUCCESS, null);
         }
     }
