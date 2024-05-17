@@ -22,28 +22,28 @@ public class ShoppingStateController {
     }
 
     @Operation(summary = "get a shopping state by id")
-    @GetMapping("/shoppingState/{id}")
+    @GetMapping("/shopping-state/{id}")
     public ResponseEntity<ApiResponse<ShoppingStateResponseDTO>> getShoppingStateById(@PathVariable("id") int id) {
         ApiResponse<ShoppingStateResponseDTO> response = shoppingStateService.getShoppingStateById(id);
         return new ResponseEntity<>(response, response.getStatus() == Estatus.SUCCESS ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
     @Operation(summary = "create a new shopping state")
-    @PostMapping("/shoppingState")
+    @PostMapping("/shopping-state")
     public ResponseEntity<ApiResponse<ShoppingStateResponseDTO>> createShoppingState(@RequestBody ShoppingStateRequestDTO shoppingStateRequestDTO) {
         var res = shoppingStateService.createShoppingState(shoppingStateRequestDTO);
         return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
     @Operation(summary = "update an existing shopping state")
-    @PutMapping("/shoppingState/{id}")
+    @PutMapping("/shopping-state/{id}")
     public ResponseEntity<ApiResponse<ShoppingStateResponseDTO>> updateShoppingState(@PathVariable int id, @RequestBody ShoppingStateRequestDTO shoppingStateRequestDTO) {
         var res = shoppingStateService.updateShoppingState(id, shoppingStateRequestDTO);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
     @Operation(summary = "delete a shopping state")
-    @DeleteMapping("/shoppingState/{id}")
+    @DeleteMapping("/shopping-state/{id}")
     public ResponseEntity<ApiResponse<Void>> deleteShoppingState(@PathVariable int id) {
         var res = shoppingStateService.deleteShoppingState(id);
         return new ResponseEntity<>(res, HttpStatus.OK);
