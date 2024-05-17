@@ -48,5 +48,4 @@ public class ShoppingStateController {
         var res = shoppingStateService.deleteShoppingState(id);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
-
 }
