@@ -24,6 +24,12 @@ public class RoleService implements IRoleService {
     }
 
     @Override
+    public Role getRoleById(int id) {
+        Optional<Role> roleOptional = roleRepository.findById(id);
+        return roleOptional.orElse(null);
+    }
+
+    @Override
     public ApiResponse<RoleResponseDTO> createRole(RoleRequestDTO roleRequestDTO) {
         var role = modelMapper.map(roleRequestDTO, Role.class);
         roleRepository.save(role);

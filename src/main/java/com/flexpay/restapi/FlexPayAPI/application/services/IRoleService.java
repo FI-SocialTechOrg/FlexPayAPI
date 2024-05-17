@@ -2,10 +2,12 @@ package com.flexpay.restapi.FlexPayAPI.application.services;
 
 import com.flexpay.restapi.FlexPayAPI.application.dto.request.RoleRequestDTO;
 import com.flexpay.restapi.FlexPayAPI.application.dto.response.RoleResponseDTO;
+import com.flexpay.restapi.FlexPayAPI.domain.entities.Role;
 import com.flexpay.restapi.shared.model.dto.response.ApiResponse;
 
 public interface IRoleService {
 
+    Role getRoleById(int id);
     ApiResponse<RoleResponseDTO> createRole(RoleRequestDTO roleRequestDTO);
 
     ApiResponse<RoleResponseDTO> updateRole(int id, RoleRequestDTO roleRequestDTO);

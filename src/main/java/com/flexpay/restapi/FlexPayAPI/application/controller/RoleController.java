@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Role", description = "Role API")
 @RestController
-@RequestMapping("/api/v1/servifix")
+@RequestMapping("/api/v1/FlexPay")
 public class RoleController {
     private final RoleService roleService;
 
