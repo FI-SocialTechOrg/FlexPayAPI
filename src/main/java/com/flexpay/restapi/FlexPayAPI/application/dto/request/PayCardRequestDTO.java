@@ -9,5 +9,4 @@ import lombok.*;
 @Builder
 public class PayCardRequestDTO {
     private double payAmount;
-    private int paymentMethod;
 }

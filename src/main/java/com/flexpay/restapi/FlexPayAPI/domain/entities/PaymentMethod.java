@@ -1,11 +1,9 @@
 package com.flexpay.restapi.FlexPayAPI.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
@@ -28,4 +26,9 @@ public class PaymentMethod {
     @Column(name = "card_number", length = 16, nullable = false)
     private String cardNumber;
 
+    @Setter
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pay_card_id", nullable = false)
+    @JsonIgnore
+    private PayCard payCard;
 }

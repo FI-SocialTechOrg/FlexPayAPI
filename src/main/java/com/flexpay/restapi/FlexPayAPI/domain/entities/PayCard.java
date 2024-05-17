@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,9 +21,6 @@ public class PayCard {
     @Column(name = "pay_amount", nullable = false)
     private double payAmount;
 
-    @Setter
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "payment_method_id", nullable = false)
-    private PaymentMethod paymentMethod;
-
+    @OneToMany(mappedBy = "payCard")
+    private List<PaymentMethod> paymentMethods;
 }

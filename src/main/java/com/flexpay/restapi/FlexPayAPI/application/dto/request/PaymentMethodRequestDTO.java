@@ -13,4 +13,5 @@ public class PaymentMethodRequestDTO {
     private String type;
     private double mount;
     private String cardNumber;
+    private int payCard;
 }

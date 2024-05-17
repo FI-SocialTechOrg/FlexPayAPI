@@ -3,6 +3,8 @@ package com.flexpay.restapi.FlexPayAPI.application.dto.response;
 import com.flexpay.restapi.FlexPayAPI.domain.entities.PaymentMethod;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -10,5 +12,5 @@ import lombok.*;
 public class PayCardResponseDTO {
     private int id;
     private double payAmount;
-    private PaymentMethod paymentMethod;
+    private List<PaymentMethod> paymentMethods;
 }
