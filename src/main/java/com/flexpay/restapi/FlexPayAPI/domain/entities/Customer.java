@@ -18,10 +18,10 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "firstName", length = 150, nullable = false)
+    @Column(name = "first_name", length = 150, nullable = false)
     private String firstName;
 
-    @Column(name = "lastName", length = 150, nullable = false)
+    @Column(name = "last_name", length = 150, nullable = false)
     private String lastName;
 
     @Column(name = "phone", length = 9, nullable = false)
@@ -36,7 +36,7 @@ public class Customer {
     @Column(name = "dni", length = 8, nullable = false)
     private String dni;
 
-    @Column(name = "photoUrl", length = 8, nullable = false)
+    @Column(name = "photo_url", length = 8, nullable = false)
     private String photoUrl;
 
     @Setter
