@@ -33,8 +33,8 @@ public class Customer {
     @Column(name = "birthday", nullable = false)
     private LocalDate birthday;
 
-    @Column(name = "DNI", length = 8, nullable = false)
-    private String DNI;
+    @Column(name = "dni", length = 8, nullable = false)
+    private String dni;
 
     @Column(name = "photoUrl", length = 8, nullable = false)
     private String photoUrl;

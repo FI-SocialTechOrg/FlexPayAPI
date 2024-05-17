@@ -25,11 +25,11 @@ public class Store {
     @Column(name = "phone", length = 9, nullable = false)
     private String phone;
 
-    @Column(name = "DNI", length = 8, nullable = false)
-    private String DNI;
+    @Column(name = "dni", length = 8, nullable = false)
+    private String dni;
 
-    @Column(name = "RUC", length = 11, nullable = false)
-    private String RUC;
+    @Column(name = "ruc", length = 11, nullable = false)
+    private String ruc;
 
     @Column(name = "companyName", length = 150, nullable = false)
     private String companyName;

@@ -13,11 +13,9 @@ public class CustomerRequestDTO {
     private String lastName;
     private String phone;
     private String gender;
-
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
-
-    private String DNI;
+    private String dni;
     private String photoUrl;
     private int account;
 }

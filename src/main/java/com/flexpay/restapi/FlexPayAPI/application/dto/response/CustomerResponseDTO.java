@@ -19,7 +19,7 @@ public class CustomerResponseDTO {
     private String phone;
     private String gender;
     private LocalDate birthday;
-    private String DNI;
+    private String dni;
     private String photoUrl;
-    private Account account;
+    private AccountResponseDTO account;
 }
