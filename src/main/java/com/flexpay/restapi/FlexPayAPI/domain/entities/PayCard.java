@@ -9,24 +9,19 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "account")
+@Table(name = "pay_card")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Account {
+public class PayCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "email", length = 100, nullable = false)
-    private String email;
-
-    @Column(name = "password", length = 500, nullable = false)
-    private String password;
-
-    @Column(name = "user_name", length = 75, nullable = false)
-    private String userName;
+    @Column(name = "pay_amount", nullable = false)
+    private double payAmount;
 
     @Setter
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "role_id", nullable = false)
-    private Role role;
+    @JoinColumn(name = "payment_method_id", nullable = false)
+    private PaymentMethod paymentMethod;
+
 }

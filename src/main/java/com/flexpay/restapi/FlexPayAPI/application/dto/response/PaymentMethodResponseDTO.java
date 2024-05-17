@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RoleResponseDTO {
+public class PaymentMethodResponseDTO {
     private int id;
     private String type;
+    private double mount;
+    private String cardNumber;
 }

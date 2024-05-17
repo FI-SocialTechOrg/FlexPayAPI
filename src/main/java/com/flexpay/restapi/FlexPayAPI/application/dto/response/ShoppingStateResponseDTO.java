@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RoleResponseDTO {
+public class ShoppingStateResponseDTO {
     private int id;
-    private String type;
+    private String name;
+    private String description;
 }

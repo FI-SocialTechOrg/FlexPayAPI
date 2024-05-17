@@ -12,8 +12,8 @@ public class StoreResponseDTO {
     private String firstName;
     private String lastName;
     private String phone;
-    private String DNI;
-    private String RUC;
+    private String dni;
+    private String ruc;
     private String companyName;
-    private Account account;
+    private AccountResponseDTO account;
 }
