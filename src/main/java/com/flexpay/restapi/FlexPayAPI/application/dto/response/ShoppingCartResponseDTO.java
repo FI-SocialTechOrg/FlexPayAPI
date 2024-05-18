@@ -1,7 +1,5 @@
 package com.flexpay.restapi.FlexPayAPI.application.dto.response;
 
-import com.flexpay.restapi.FlexPayAPI.domain.entities.Customer;
-import com.flexpay.restapi.FlexPayAPI.domain.entities.ShoppingState;
 import lombok.*;
 
 @Data

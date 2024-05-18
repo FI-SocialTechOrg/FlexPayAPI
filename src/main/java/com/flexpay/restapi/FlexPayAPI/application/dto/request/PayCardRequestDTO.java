@@ -1,6 +1,5 @@
 package com.flexpay.restapi.FlexPayAPI.application.dto.request;
 
-import com.flexpay.restapi.FlexPayAPI.domain.entities.PaymentMethod;
 import lombok.*;
 
 import java.time.LocalDate;
