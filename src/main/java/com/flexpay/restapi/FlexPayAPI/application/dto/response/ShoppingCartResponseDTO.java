@@ -12,5 +12,5 @@ public class ShoppingCartResponseDTO {
     private int id;
     private double total;
     private CustomerResponseDTO customer;
-    private ShoppingState shoppingState;
+    private ShoppingStateResponseDTO shoppingState;
 }

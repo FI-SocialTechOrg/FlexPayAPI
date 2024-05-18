@@ -14,5 +14,5 @@ public class AccountResponseDTO {
     private int id;
     private String email;
     private String userName;
-    private Role role;
+    private RoleResponseDTO role;
 }

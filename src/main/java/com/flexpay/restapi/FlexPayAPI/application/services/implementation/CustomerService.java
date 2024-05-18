@@ -34,7 +34,7 @@ public class CustomerService implements ICustomerService {
         Optional<Customer> customerOptional = customerRepository.findById(id);
         if (customerOptional.isPresent()){
             Customer customer = customerOptional.get();
-            CustomerResponseDTO responseDTO = convertToCustomerResponseDTO(customer);
+            CustomerResponseDTO responseDTO = modelMapper.map(customer, CustomerResponseDTO.class);
 
             return new ApiResponse<>("Customer fetched successfully", Estatus.SUCCESS, responseDTO);
         }else {
@@ -46,7 +46,7 @@ public class CustomerService implements ICustomerService {
     public ApiResponse<List<CustomerResponseDTO>> getAllCustomers() {
         List<Customer> customerList = (List<Customer>) customerRepository.findAll();
         List<CustomerResponseDTO> customerResponseDTOList = customerList.stream()
-                .map(this::convertToCustomerResponseDTO)
+                .map(entity-> modelMapper.map(entity, CustomerResponseDTO.class))
                 .collect(Collectors.toList());
 
         return new ApiResponse<>("All customers fetched successfully", Estatus.SUCCESS, customerResponseDTOList);
@@ -57,7 +57,7 @@ public class CustomerService implements ICustomerService {
         var customer = modelMapper.map(customerRequestDTO, Customer.class);
         customer.setAccount(accountRepository.getAccountById(customerRequestDTO.getAccount()));
         customerRepository.save(customer);
-        var response = convertToCustomerResponseDTO(customer);
+        var response = modelMapper.map(customer, CustomerResponseDTO.class);
         return new ApiResponse<>("Customer created successfully", Estatus.SUCCESS, response);
     }
 
@@ -72,7 +72,7 @@ public class CustomerService implements ICustomerService {
             modelMapper.map(customerRequestDTO, customer);
             customer.setAccount(accountRepository.getAccountById(customerRequestDTO.getAccount()));
             customerRepository.save(customer);
-            CustomerResponseDTO response = convertToCustomerResponseDTO(customer);
+            CustomerResponseDTO response = modelMapper.map(customer, CustomerResponseDTO.class);
             return new ApiResponse<>("Store updated successfully", Estatus.SUCCESS, response);
         }
     }
@@ -89,22 +89,4 @@ public class CustomerService implements ICustomerService {
         }
     }
 
-    private CustomerResponseDTO convertToCustomerResponseDTO(Customer customer) {
-        // Mapeo manual de Customer a CustomerResponseDTO
-        CustomerResponseDTO responseDTO = modelMapper.map(customer, CustomerResponseDTO.class);
-
-        // Mapeo manual de Account a AccountResponseDTO
-        Account account = customer.getAccount();
-        AccountResponseDTO accountResponseDTO = AccountResponseDTO.builder()
-                .id(account.getId())
-                .email(account.getEmail())
-                .userName(account.getUserName())
-                .role(account.getRole())
-                .build();
-
-        // Asignar el accountResponseDTO al responseDTO
-        responseDTO.setAccount(accountResponseDTO);
-
-        return responseDTO;
-    }
 }

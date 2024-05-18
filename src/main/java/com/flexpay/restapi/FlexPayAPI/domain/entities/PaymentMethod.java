@@ -29,6 +29,5 @@ public class PaymentMethod {
     @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pay_card_id", nullable = false)
-    @JsonIgnore
     private PayCard payCard;
 }

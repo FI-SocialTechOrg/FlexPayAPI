@@ -36,7 +36,7 @@ public class StoreService implements IStoreService {
         Optional<Store> storeOptional = storeRepository.findById(id);
         if (storeOptional.isPresent()){
             Store store = storeOptional.get();
-            StoreResponseDTO responseDTO = convertToCustomerResponseDTO(store);
+            StoreResponseDTO responseDTO = modelMapper.map(store, StoreResponseDTO.class);
             return new ApiResponse<>("Store fetched successfully", Estatus.SUCCESS, responseDTO);
         }else {
             return new ApiResponse<>("Store not found", Estatus.ERROR, null);
@@ -47,7 +47,7 @@ public class StoreService implements IStoreService {
     public ApiResponse<List<StoreResponseDTO>> getAllStores() {
         List<Store> storeList = (List<Store>) storeRepository.findAll();
         List<StoreResponseDTO> storeResponseDTOList = storeList.stream()
-                .map(this::convertToCustomerResponseDTO)
+                .map(entity-> modelMapper.map(entity, StoreResponseDTO.class))
                 .collect(Collectors.toList());
 
         return new ApiResponse<>("All stores fetched successfully", Estatus.SUCCESS, storeResponseDTOList);
@@ -58,7 +58,7 @@ public class StoreService implements IStoreService {
         var store = modelMapper.map(storeRequestDTO, Store.class);
         store.setAccount(accountRepository.getAccountById(storeRequestDTO.getAccount()));
         storeRepository.save(store);
-        var response = convertToCustomerResponseDTO(store);
+        var response = modelMapper.map(store, StoreResponseDTO.class);
 
         return new ApiResponse<>("Store created successfully", Estatus.SUCCESS, response);
     }
@@ -74,7 +74,7 @@ public class StoreService implements IStoreService {
             modelMapper.map(storeRequestDTO, store);
             store.setAccount(accountRepository.getAccountById(storeRequestDTO.getAccount()));
             storeRepository.save(store);
-            StoreResponseDTO response = convertToCustomerResponseDTO(store);
+            StoreResponseDTO response = modelMapper.map(store, StoreResponseDTO.class);
             return new ApiResponse<>("Store updated successfully", Estatus.SUCCESS, response);
         }
     }
@@ -90,21 +90,5 @@ public class StoreService implements IStoreService {
             return new ApiResponse<>("Store deleted successfully", Estatus.SUCCESS, null);
         }
     }
-
-
-    private StoreResponseDTO convertToCustomerResponseDTO(Store store) {
-        StoreResponseDTO responseDTO = modelMapper.map(store, StoreResponseDTO.class);
-
-        Account account = store.getAccount();
-        AccountResponseDTO accountResponseDTO = AccountResponseDTO.builder()
-                .id(account.getId())
-                .email(account.getEmail())
-                .userName(account.getUserName())
-                .role(account.getRole())
-                .build();
-
-        responseDTO.setAccount(accountResponseDTO);
-
-        return responseDTO;
-    }
+        
 }

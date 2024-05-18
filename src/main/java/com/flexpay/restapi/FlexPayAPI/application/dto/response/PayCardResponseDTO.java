@@ -12,5 +12,5 @@ import java.util.List;
 public class PayCardResponseDTO {
     private int id;
     private double payAmount;
-    private List<PaymentMethod> paymentMethods;
+    private List<PaymentMethodResponseDTO> paymentMethods;
 }
