@@ -2,6 +2,8 @@ package com.flexpay.restapi.FlexPayAPI.application.dto.response;
 
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,4 +19,5 @@ public class CreditCardResponseDTO {
     private PayCardResponseDTO payCard;
     private StateCardResponseDTO stateCard;
     private ShoppingCartResponseDTO shoppingCart;
+    private List<MovementResponseDTO> movements;
 }
