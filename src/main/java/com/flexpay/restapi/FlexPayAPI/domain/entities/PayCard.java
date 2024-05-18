@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,9 +22,9 @@ public class PayCard {
     @Column(name = "pay_amount", nullable = false)
     private double payAmount;
 
-    @Setter
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "payment_method_id", nullable = false)
-    private PaymentMethod paymentMethod;
+    @Column(name = "date_limit", nullable = false)
+    private LocalDate dateLimit;
 
+    @OneToMany(mappedBy = "payCard")
+    private List<PaymentMethod> paymentMethods;
 }

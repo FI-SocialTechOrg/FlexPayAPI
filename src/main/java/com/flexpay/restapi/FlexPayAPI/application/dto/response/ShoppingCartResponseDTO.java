@@ -1,7 +1,5 @@
 package com.flexpay.restapi.FlexPayAPI.application.dto.response;
 
-import com.flexpay.restapi.FlexPayAPI.domain.entities.Customer;
-import com.flexpay.restapi.FlexPayAPI.domain.entities.ShoppingState;
 import lombok.*;
 
 @Data
@@ -12,5 +10,5 @@ public class ShoppingCartResponseDTO {
     private int id;
     private double total;
     private CustomerResponseDTO customer;
-    private ShoppingState shoppingState;
+    private ShoppingStateResponseDTO shoppingState;
 }

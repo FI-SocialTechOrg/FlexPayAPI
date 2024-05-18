@@ -1,7 +1,9 @@
 package com.flexpay.restapi.FlexPayAPI.application.dto.response;
 
-import com.flexpay.restapi.FlexPayAPI.domain.entities.PaymentMethod;
 import lombok.*;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -10,5 +12,6 @@ import lombok.*;
 public class PayCardResponseDTO {
     private int id;
     private double payAmount;
-    private PaymentMethod paymentMethod;
+    private LocalDate dateLimit;
+    private List<PaymentMethodResponseDTO> paymentMethods;
 }

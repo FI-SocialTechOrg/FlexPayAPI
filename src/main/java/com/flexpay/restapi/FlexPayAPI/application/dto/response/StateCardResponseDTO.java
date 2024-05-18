@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AccountResponseDTO {
+public class StateCardResponseDTO {
     private int id;
-    private String email;
-    private String userName;
-    private RoleResponseDTO role;
+    private String name;
+    private String description;
 }

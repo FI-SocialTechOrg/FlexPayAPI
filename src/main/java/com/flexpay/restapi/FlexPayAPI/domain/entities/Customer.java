@@ -36,7 +36,7 @@ public class Customer {
     @Column(name = "dni", length = 8, nullable = false)
     private String dni;
 
-    @Column(name = "photo_url", length = 8, nullable = false)
+    @Column(name = "photo_url", length = 500, nullable = false)
     private String photoUrl;
 
     @Setter

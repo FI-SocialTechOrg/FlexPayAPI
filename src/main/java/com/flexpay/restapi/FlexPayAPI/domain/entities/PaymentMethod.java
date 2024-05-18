@@ -1,11 +1,11 @@
 package com.flexpay.restapi.FlexPayAPI.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -22,10 +22,17 @@ public class PaymentMethod {
     @Column(name = "type", length = 50, nullable = false)
     private String type;
 
+    @Column(name = "date_pay", nullable = false)
+    private LocalDate datePay;
+
     @Column(name = "mount", nullable = false)
     private double mount;
 
     @Column(name = "card_number", length = 16, nullable = false)
     private String cardNumber;
 
+    @Setter
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pay_card_id", nullable = false)
+    private PayCard payCard;
 }

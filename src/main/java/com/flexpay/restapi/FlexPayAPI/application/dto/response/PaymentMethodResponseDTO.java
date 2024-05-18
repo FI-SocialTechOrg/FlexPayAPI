@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class PaymentMethodResponseDTO {
     private int id;
     private String type;
+    private LocalDate datePay;
     private double mount;
     private String cardNumber;
 }

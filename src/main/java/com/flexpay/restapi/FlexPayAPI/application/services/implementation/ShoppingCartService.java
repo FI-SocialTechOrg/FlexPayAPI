@@ -37,7 +37,7 @@ public class ShoppingCartService implements IShoppingCartService {
         Optional<ShoppingCart> shoppingCartOptional = shoppingCartRepository.findById(id);
         if (shoppingCartOptional.isPresent()){
             ShoppingCart shoppingCart = shoppingCartOptional.get();
-            ShoppingCartResponseDTO responseDTO = mapToShoppingCartResponseDTO(shoppingCart);
+            ShoppingCartResponseDTO responseDTO = modelMapper.map(shoppingCart, ShoppingCartResponseDTO.class);
             return new ApiResponse<>("ShoppingCart fetched successfully", Estatus.SUCCESS, responseDTO);
         }else {
             return new ApiResponse<>("ShoppingCart not found", Estatus.ERROR, null);
@@ -50,7 +50,7 @@ public class ShoppingCartService implements IShoppingCartService {
         shoppingCart.setCustomer(customerRepository.getCustomerById(shoppingCartRequestDTO.getCustomer()));
         shoppingCart.setShoppingState(shoppingStateRepository.getShoppingStateById(shoppingCartRequestDTO.getShoppingState()));
         shoppingCartRepository.save(shoppingCart);
-        var response = mapToShoppingCartResponseDTO(shoppingCart);
+        var response = modelMapper.map(shoppingCart, ShoppingCartResponseDTO.class);
 
         return new ApiResponse<>("ShoppingCart created successfully", Estatus.SUCCESS, response);
     }
@@ -67,7 +67,7 @@ public class ShoppingCartService implements IShoppingCartService {
             shoppingCart.setCustomer(customerRepository.getCustomerById(shoppingCartRequestDTO.getCustomer()));
             shoppingCart.setShoppingState(shoppingStateRepository.getShoppingStateById(shoppingCartRequestDTO.getShoppingState()));
             shoppingCartRepository.save(shoppingCart);
-            ShoppingCartResponseDTO response = mapToShoppingCartResponseDTO(shoppingCart);
+            ShoppingCartResponseDTO response = modelMapper.map(shoppingCart, ShoppingCartResponseDTO.class);
             return new ApiResponse<>("ShoppingCart updated successfully", Estatus.SUCCESS, response);
         }
     }
@@ -82,31 +82,6 @@ public class ShoppingCartService implements IShoppingCartService {
             shoppingCartRepository.deleteById(id);
             return new ApiResponse<>("ShoppingCart deleted successfully", Estatus.SUCCESS, null);
         }
-    }
-
-    private ShoppingCartResponseDTO mapToShoppingCartResponseDTO(ShoppingCart shoppingCart) {
-        ShoppingCartResponseDTO responseDTO = modelMapper.map(shoppingCart, ShoppingCartResponseDTO.class);
-
-        // Mapeo manual de Customer a CustomerResponseDTO
-        Customer customer = shoppingCart.getCustomer();
-        CustomerResponseDTO customerResponseDTO = modelMapper.map(customer, CustomerResponseDTO.class);
-
-        // Mapeo manual de Account a AccountResponseDTO
-        Account account = customer.getAccount();
-        AccountResponseDTO accountResponseDTO = AccountResponseDTO.builder()
-                .id(account.getId())
-                .email(account.getEmail())
-                .userName(account.getUserName())
-                .role(account.getRole())
-                .build();
-
-        // Asignar el accountResponseDTO al customerResponseDTO
-        customerResponseDTO.setAccount(accountResponseDTO);
-
-        // Asignar el customerResponseDTO al responseDTO
-        responseDTO.setCustomer(customerResponseDTO);
-
-        return responseDTO;
     }
 
 }
