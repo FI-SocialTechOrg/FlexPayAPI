@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -20,6 +21,9 @@ public class PayCard {
 
     @Column(name = "pay_amount", nullable = false)
     private double payAmount;
+
+    @Column(name = "date_limit", nullable = false)
+    private LocalDate dateLimit;
 
     @OneToMany(mappedBy = "payCard")
     private List<PaymentMethod> paymentMethods;

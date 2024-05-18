@@ -90,5 +90,5 @@ public class StoreService implements IStoreService {
             return new ApiResponse<>("Store deleted successfully", Estatus.SUCCESS, null);
         }
     }
-        
+
 }

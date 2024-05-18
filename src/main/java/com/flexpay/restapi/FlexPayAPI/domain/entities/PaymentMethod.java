@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,6 +21,9 @@ public class PaymentMethod {
 
     @Column(name = "type", length = 50, nullable = false)
     private String type;
+
+    @Column(name = "date_pay", nullable = false)
+    private LocalDate datePay;
 
     @Column(name = "mount", nullable = false)
     private double mount;
