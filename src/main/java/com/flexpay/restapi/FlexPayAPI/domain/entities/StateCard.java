@@ -12,14 +12,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "role")
+@Table(name = "state_card")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Role {
-
+public class StateCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "type", length = 20, nullable = false)
-    private String type;
+    @Column(name = "name", length = 20, nullable = false)
+    private String name;
+
+    @Column(name = "description", length = 75, nullable = false)
+    private String description;
 }
