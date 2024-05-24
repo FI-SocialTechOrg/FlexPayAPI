@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -36,5 +37,8 @@ public class Movement {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "credit_configuration_id", nullable = false)
     private CreditConfiguration creditConfiguration;
+
+    @OneToMany(mappedBy = "movement")
+    private List<PayMovement> payMovements;
 
 }

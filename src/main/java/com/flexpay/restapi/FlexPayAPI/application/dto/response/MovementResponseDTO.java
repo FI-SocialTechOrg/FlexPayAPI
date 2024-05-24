@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -18,4 +19,5 @@ public class MovementResponseDTO {
     private LocalDate paymentDay;
     private LocalDate dateMovement;
     private CreditConfigurationResponseDTO creditConfiguration;
+    private List<PayMovementResponseDTO> payMovements;
 }

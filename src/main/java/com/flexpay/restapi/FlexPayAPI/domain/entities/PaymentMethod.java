@@ -30,9 +30,4 @@ public class PaymentMethod {
 
     @Column(name = "card_number", length = 16, nullable = false)
     private String cardNumber;
-
-    @Setter
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pay_card_id", nullable = false)
-    private PayCard payCard;
 }
