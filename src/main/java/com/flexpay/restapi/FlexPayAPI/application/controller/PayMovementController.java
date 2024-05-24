@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Tag(name = "Pay Card", description = "Pay Card API")
+@Tag(name = "Pay Movement", description = "Pay Movement API")
 @RestController
 @RequestMapping("/api/v1/FlexPay")
 public class PayMovementController {
@@ -21,28 +21,28 @@ public class PayMovementController {
         this.payMovementService = payMovementService;
     }
 
-    @Operation(summary = "get a pay card by id")
+    @Operation(summary = "get a pay movement by id")
     @GetMapping("/pay-card/{id}")
     public ResponseEntity<ApiResponse<PayMovementResponseDTO>> getPayMovementById(@PathVariable("id") int id) {
         ApiResponse<PayMovementResponseDTO> response = payMovementService.getPayMovementById(id);
         return new ResponseEntity<>(response, response.getStatus() == Estatus.SUCCESS ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
-    @Operation(summary = "create a new pay card")
+    @Operation(summary = "create a new pay movement")
     @PostMapping("/pay-card")
     public ResponseEntity<ApiResponse<PayMovementResponseDTO>> createPayMovement(@RequestBody PayMovementRequestDTO payMovementRequestDTO) {
         var res = payMovementService.createPayMovement(payMovementRequestDTO);
         return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
-    @Operation(summary = "update an existing pay card")
+    @Operation(summary = "update an existing pay movement")
     @PutMapping("/pay-card/{id}")
     public ResponseEntity<ApiResponse<PayMovementResponseDTO>> updatePayMovement(@PathVariable int id, @RequestBody PayMovementRequestDTO payMovementRequestDTO) {
         var res = payMovementService.updatePayMovement(id, payMovementRequestDTO);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
-    @Operation(summary = "delete a pay card")
+    @Operation(summary = "delete a pay movement")
     @DeleteMapping("/pay-card/{id}")
     public ResponseEntity<ApiResponse<Void>> deletePayMovement(@PathVariable int id) {
         var res = payMovementService.deletePayMovement(id);

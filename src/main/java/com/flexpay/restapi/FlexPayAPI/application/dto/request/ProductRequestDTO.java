@@ -13,4 +13,5 @@ import lombok.NoArgsConstructor;
 public class ProductRequestDTO {
     private String name;
     private String description;
+    private String image;
 }
