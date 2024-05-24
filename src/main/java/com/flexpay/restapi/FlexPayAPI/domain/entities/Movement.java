@@ -18,37 +18,18 @@ public class Movement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "capitalization_period", nullable = false)
-    private int capitalizationPeriod;
-
-    @Column(name = "interest_rate", nullable = false)
-    private double interestRate;
-
     @Column(name = "credit_term", nullable = false)
     private int creditTerm;
-
-    @Column(name = "monthly_fees", nullable = false)
-    private int monthlyFees;
 
     @Column(name = "payment_day", nullable = false)
     private LocalDate paymentDay;
 
-    @Column(name = "discount", nullable = false)
-    private double discount;
-
-    @Column(name = "grace_period", nullable = false)
-    private double gracePeriod;
-
-    @Column(name = "initial_fee", nullable = false)
-    private double initialFee  ;
+    @Column(name = "date_movement", nullable = false)
+    private LocalDate dateMovement;
 
     @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "credit_card_id", nullable = false)
     private CreditCard creditCard;
 
-    @Setter
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "interest_id", nullable = false)
-    private Interest interest;
 }
