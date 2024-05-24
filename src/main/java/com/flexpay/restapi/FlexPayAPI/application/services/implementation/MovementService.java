@@ -5,6 +5,7 @@ import com.flexpay.restapi.FlexPayAPI.application.dto.response.MovementResponseD
 import com.flexpay.restapi.FlexPayAPI.application.services.IMovementService;
 import com.flexpay.restapi.FlexPayAPI.domain.entities.Movement;
 import com.flexpay.restapi.FlexPayAPI.infraestructure.repositories.ICreditCardRepository;
+import com.flexpay.restapi.FlexPayAPI.infraestructure.repositories.ICreditConfigurationRepository;
 import com.flexpay.restapi.FlexPayAPI.infraestructure.repositories.IInterestRepository;
 import com.flexpay.restapi.FlexPayAPI.infraestructure.repositories.IMovementRepository;
 import com.flexpay.restapi.shared.model.dto.response.ApiResponse;
@@ -19,13 +20,13 @@ public class MovementService implements IMovementService {
 
     private final IMovementRepository movementRepository;
     private final ICreditCardRepository creditCardRepository;
-    private final IInterestRepository interestRepository;
+    private final ICreditConfigurationRepository creditConfigurationRepository;
     private final ModelMapper modelMapper;
 
-    public MovementService(IMovementRepository movementRepository, ICreditCardRepository creditCardRepository, IInterestRepository interestRepository, ModelMapper modelMapper) {
+    public MovementService(IMovementRepository movementRepository, ICreditCardRepository creditCardRepository, ICreditConfigurationRepository creditConfigurationRepository, ModelMapper modelMapper) {
         this.movementRepository = movementRepository;
         this.creditCardRepository = creditCardRepository;
-        this.interestRepository = interestRepository;
+        this.creditConfigurationRepository = creditConfigurationRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -45,7 +46,7 @@ public class MovementService implements IMovementService {
     public ApiResponse<MovementResponseDTO> createMovement(MovementRequestDTO movementRequestDTO) {
         var movement = modelMapper.map(movementRequestDTO, Movement.class);
         movement.setCreditCard(creditCardRepository.getCreditCardById(movementRequestDTO.getCreditCard()));
-        movement.setInterest(interestRepository.getInterestById(movementRequestDTO.getInterest()));
+        movement.setCreditConfiguration(creditConfigurationRepository.getCreditConfigurationById(movementRequestDTO.getCreditConfiguration()));
         movementRepository.save(movement);
         var response = modelMapper.map(movement, MovementResponseDTO.class);
 
@@ -62,7 +63,7 @@ public class MovementService implements IMovementService {
             Movement movement = movementOptional.get();
             modelMapper.map(movementRequestDTO, movement);
             movement.setCreditCard(creditCardRepository.getCreditCardById(movementRequestDTO.getCreditCard()));
-            movement.setInterest(interestRepository.getInterestById(movementRequestDTO.getInterest()));
+            movement.setCreditConfiguration(creditConfigurationRepository.getCreditConfigurationById(movementRequestDTO.getCreditConfiguration()));
             movementRepository.save(movement);
             MovementResponseDTO response = modelMapper.map(movement, MovementResponseDTO.class);
             return new ApiResponse<>("Movement updated successfully", Estatus.SUCCESS, response);

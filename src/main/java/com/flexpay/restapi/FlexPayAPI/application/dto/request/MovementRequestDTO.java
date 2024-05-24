@@ -16,4 +16,5 @@ public class MovementRequestDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateMovement;
     private int creditCard;
+    private int creditConfiguration;
 }

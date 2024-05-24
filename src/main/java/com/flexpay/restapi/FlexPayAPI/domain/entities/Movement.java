@@ -32,4 +32,9 @@ public class Movement {
     @JoinColumn(name = "credit_card_id", nullable = false)
     private CreditCard creditCard;
 
+    @Setter
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "credit_configuration_id", nullable = false)
+    private CreditConfiguration creditConfiguration;
+
 }
