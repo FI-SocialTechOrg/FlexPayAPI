@@ -2,6 +2,7 @@ package com.flexpay.restapi.FlexPayAPI.application.services.implementation;
 
 import com.flexpay.restapi.FlexPayAPI.application.dto.request.ProductStockRequestDTO;
 import com.flexpay.restapi.FlexPayAPI.application.dto.response.ProductStockResponseDTO;
+import com.flexpay.restapi.FlexPayAPI.application.dto.response.ProductStockWithStoreResponseDTO;
 import com.flexpay.restapi.FlexPayAPI.application.services.IProductStockService;
 import com.flexpay.restapi.FlexPayAPI.domain.entities.ProductStock;
 import com.flexpay.restapi.FlexPayAPI.infraestructure.repositories.IProductRepository;
@@ -32,7 +33,7 @@ public class ProductStockService implements IProductStockService {
         this.stateStockRepository = stateStockRepository;
         this.modelMapper = modelMapper;
     }
-
+    @Override
     public ApiResponse<ProductStockResponseDTO> getProductStockById(int id) {
         Optional<ProductStock> productStockOptional = productStockRepository.findById(id);
         if (productStockOptional.isPresent()){
@@ -44,6 +45,7 @@ public class ProductStockService implements IProductStockService {
         }
     }
 
+    @Override
     public ApiResponse<List<ProductStockResponseDTO>> getAllProductStocks() {
         List<ProductStock> productStockList = (List<ProductStock>) productStockRepository.findAll();
         List<ProductStockResponseDTO> productStockResponseDTOList = productStockList.stream()
@@ -52,7 +54,7 @@ public class ProductStockService implements IProductStockService {
 
         return new ApiResponse<>("All productStocks fetched successfully", Estatus.SUCCESS, productStockResponseDTOList);
     }
-
+    @Override
     public ApiResponse<ProductStockResponseDTO> createProductStock(ProductStockRequestDTO productStockRequestDTO) {
         var productStock = modelMapper.map(productStockRequestDTO, ProductStock.class);
         productStock.setProduct(productRepository.getProductById(productStockRequestDTO.getProduct()));
@@ -62,7 +64,7 @@ public class ProductStockService implements IProductStockService {
         var response = modelMapper.map(productStock, ProductStockResponseDTO.class);
         return new ApiResponse<>("ProductStock created successfully", Estatus.SUCCESS, response);
     }
-
+    @Override
     public ApiResponse<ProductStockResponseDTO> updateProductStock(int id, ProductStockRequestDTO productStockRequestDTO) {
         Optional<ProductStock> productStockOptional = productStockRepository.findById(id);
         if (productStockOptional.isPresent()){
@@ -78,7 +80,7 @@ public class ProductStockService implements IProductStockService {
             return new ApiResponse<>("ProductStock not found", Estatus.ERROR, null);
         }
     }
-
+    @Override
     public ApiResponse<Void> deleteProductStock(int id) {
         Optional<ProductStock> productStockOptional = productStockRepository.findById(id);
         if (productStockOptional.isEmpty()) {
