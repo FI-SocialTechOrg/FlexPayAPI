@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 @Builder
 public class PaymentMethodRequestDTO {
     private String type;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate datePay;
     private double mount;
     private String cardNumber;

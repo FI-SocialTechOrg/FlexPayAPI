@@ -21,6 +21,5 @@ public class MovementResponseDTO {
     private double discount;
     private double gracePeriod;
     private double initialFee;
-    //private CreditCardResponseDTO creditCard;
     private InterestResponseDTO interest;
 }

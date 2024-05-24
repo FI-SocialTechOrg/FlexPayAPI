@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,8 +27,11 @@ public class ShoppingCart {
     private Customer customer;
 
     @Setter
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shopping_state_id", nullable = false)
     private ShoppingState shoppingState;
+
+    @OneToMany(mappedBy = "shoppingCart")
+    private List<ShoppingStock> shoppingStocks;
 
 }
