@@ -42,7 +42,7 @@ public class CreditCard {
     private PayCard payCard;
 
     @Setter
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "state_card_id", nullable = false)
     private StateCard stateCard;
 

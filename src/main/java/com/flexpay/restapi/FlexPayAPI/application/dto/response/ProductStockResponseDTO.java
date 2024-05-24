@@ -14,6 +14,5 @@ public class ProductStockResponseDTO {
     private double price;
     private int mountStock;
     private ProductResponseDTO product;
-    private StoreResponseDTO store;
     private StateStockResponseDTO stateStock;
 }

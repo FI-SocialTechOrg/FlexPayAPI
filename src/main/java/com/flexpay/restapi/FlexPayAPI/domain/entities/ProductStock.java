@@ -19,7 +19,7 @@ public class ProductStock {
     @Column(name = "price", nullable = false)
     private double price;
 
-    @Column(name = "stock", nullable = false)
+    @Column(name = "mount_stock", nullable = false)
     private int mountStock;
 
     @Setter
@@ -33,7 +33,7 @@ public class ProductStock {
     private Store store;
 
     @Setter
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "state_stock_id", nullable = false)
     private StateStock stateStock;
 }
