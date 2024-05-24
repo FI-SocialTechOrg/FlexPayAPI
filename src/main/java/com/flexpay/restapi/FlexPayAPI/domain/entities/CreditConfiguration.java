@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,5 +37,8 @@ public class CreditConfiguration {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id", nullable = false)
     private Store store;
+
+    @OneToMany(mappedBy = "creditConfiguration")
+    private List<Interest> interests;
 
 }

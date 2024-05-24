@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,4 +19,5 @@ public class CreditConfigurationResponseDTO {
     private int gracePeriod;
     private int initialFee;
     private StoreResponseDTO store;
+    private List<InterestResponseDTO> interests;
 }
