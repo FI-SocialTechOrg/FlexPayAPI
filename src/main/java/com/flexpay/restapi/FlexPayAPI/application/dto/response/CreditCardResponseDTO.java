@@ -16,7 +16,6 @@ public class CreditCardResponseDTO {
     private double purchase;
     private double purchaseInterest;
     private double debt;
-    private PayCardResponseDTO payCard;
     private StateCardResponseDTO stateCard;
     private ShoppingCartResponseDTO shoppingCart;
     private List<MovementResponseDTO> movements;

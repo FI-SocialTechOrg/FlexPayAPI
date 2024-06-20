@@ -4,6 +4,7 @@ import com.flexpay.restapi.FlexPayAPI.application.dto.request.StoreRequestDTO;
 import com.flexpay.restapi.FlexPayAPI.application.dto.response.AccountResponseDTO;
 import com.flexpay.restapi.FlexPayAPI.application.dto.response.CustomerResponseDTO;
 import com.flexpay.restapi.FlexPayAPI.application.dto.response.StoreResponseDTO;
+import com.flexpay.restapi.FlexPayAPI.application.dto.response.StoreWithoutProductStockResponseDTO;
 import com.flexpay.restapi.FlexPayAPI.application.services.IStoreService;
 import com.flexpay.restapi.FlexPayAPI.domain.entities.Account;
 import com.flexpay.restapi.FlexPayAPI.domain.entities.Customer;
@@ -42,6 +43,7 @@ public class StoreService implements IStoreService {
             return new ApiResponse<>("Store not found", Estatus.ERROR, null);
         }
     }
+
 
     @Override
     public ApiResponse<List<StoreResponseDTO>> getAllStores() {

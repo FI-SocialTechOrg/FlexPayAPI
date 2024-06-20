@@ -37,11 +37,6 @@ public class CreditCard {
     private double debt;
 
     @Setter
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pay_card_id", nullable = false)
-    private PayCard payCard;
-
-    @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "state_card_id", nullable = false)
     private StateCard stateCard;

@@ -30,6 +30,8 @@ public class ShoppingStockController {
         return new ResponseEntity<>(response, response.getStatus() == Estatus.SUCCESS ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
+
+
     @Operation(summary = "get all shopping stocks")
     @GetMapping("/shopping-stock")
     public ResponseEntity<ApiResponse<List<ShoppingStockResponseDTO>>> getAllShoppingStocks() {

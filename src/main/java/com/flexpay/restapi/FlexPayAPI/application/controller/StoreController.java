@@ -2,6 +2,7 @@ package com.flexpay.restapi.FlexPayAPI.application.controller;
 
 import com.flexpay.restapi.FlexPayAPI.application.dto.request.StoreRequestDTO;
 import com.flexpay.restapi.FlexPayAPI.application.dto.response.StoreResponseDTO;
+import com.flexpay.restapi.FlexPayAPI.application.dto.response.StoreWithoutProductStockResponseDTO;
 import com.flexpay.restapi.FlexPayAPI.application.services.implementation.StoreService;
 import com.flexpay.restapi.shared.model.dto.response.ApiResponse;
 import com.flexpay.restapi.shared.model.enums.Estatus;
@@ -30,6 +31,7 @@ public class StoreController {
         ApiResponse<StoreResponseDTO> response = storeService.getStoreById(id);
         return new ResponseEntity<>(response, response.getStatus() == Estatus.SUCCESS ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
+
 
     @Operation(summary = "get all stores")
     @GetMapping("/store")

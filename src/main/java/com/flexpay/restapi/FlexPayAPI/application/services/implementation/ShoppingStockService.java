@@ -43,6 +43,8 @@ public class ShoppingStockService implements IShoppingStockService {
         }
     }
 
+
+
     @Override
     public ApiResponse<List<ShoppingStockResponseDTO>> getAllShoppingStocks() {
         List<ShoppingStock> shoppingStockList = (List<ShoppingStock>) shoppingStockRepository.findAll();

@@ -1,15 +1,14 @@
 package com.flexpay.restapi.FlexPayAPI.application.dto.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class InterestRequestDTO {
-    private String type;
-    private String description;
+    private double rate;
+    private int creditConfiguration;
+    private int payInterest;
+    private int typeInterest;
 }

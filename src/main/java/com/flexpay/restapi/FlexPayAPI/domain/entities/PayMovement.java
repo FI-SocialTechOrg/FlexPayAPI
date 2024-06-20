@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,7 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "pay_card")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class PayCard {
+public class PayMovement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -25,6 +24,13 @@ public class PayCard {
     @Column(name = "date_limit", nullable = false)
     private LocalDate dateLimit;
 
-    @OneToMany(mappedBy = "payCard")
-    private List<PaymentMethod> paymentMethods;
+    @Setter
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "payment_method_id", nullable = false)
+    private PaymentMethod paymentMethod;
+
+    @Setter
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "movement_id", nullable = false)
+    private Movement movement;
 }

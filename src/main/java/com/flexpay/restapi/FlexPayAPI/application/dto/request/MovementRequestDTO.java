@@ -10,15 +10,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 public class MovementRequestDTO {
-    private int capitalizationPeriod;
-    private double interestRate;
     private int creditTerm;
-    private int monthlyFees;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate paymentDay;
-    private double discount;
-    private double gracePeriod;
-    private double initialFee  ;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateMovement;
     private int creditCard;
-    private int interest;
+    private int creditConfiguration;
 }

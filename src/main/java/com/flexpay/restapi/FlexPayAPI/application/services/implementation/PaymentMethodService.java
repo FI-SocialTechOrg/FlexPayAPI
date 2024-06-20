@@ -4,7 +4,6 @@ import com.flexpay.restapi.FlexPayAPI.application.dto.request.PaymentMethodReque
 import com.flexpay.restapi.FlexPayAPI.application.dto.response.PaymentMethodResponseDTO;
 import com.flexpay.restapi.FlexPayAPI.application.services.IPaymentMethodService;
 import com.flexpay.restapi.FlexPayAPI.domain.entities.PaymentMethod;
-import com.flexpay.restapi.FlexPayAPI.infraestructure.repositories.IPayCardRepository;
 import com.flexpay.restapi.FlexPayAPI.infraestructure.repositories.IPaymentMethodRepository;
 import com.flexpay.restapi.shared.model.dto.response.ApiResponse;
 import com.flexpay.restapi.shared.model.enums.Estatus;
@@ -16,12 +15,10 @@ import java.util.Optional;
 @Service
 public class PaymentMethodService implements IPaymentMethodService {
     private final IPaymentMethodRepository paymentMethodRepository;
-    private final IPayCardRepository payCardRepository;
     private final ModelMapper modelMapper;
 
-    public PaymentMethodService(IPaymentMethodRepository paymentMethodRepository, IPayCardRepository payCardRepository, ModelMapper modelMapper) {
+    public PaymentMethodService(IPaymentMethodRepository paymentMethodRepository, ModelMapper modelMapper) {
         this.paymentMethodRepository = paymentMethodRepository;
-        this.payCardRepository = payCardRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -40,7 +37,6 @@ public class PaymentMethodService implements IPaymentMethodService {
     @Override
     public ApiResponse<PaymentMethodResponseDTO> createPaymentMethod(PaymentMethodRequestDTO paymentMethodRequestDTO) {
         var paymentMethod = modelMapper.map(paymentMethodRequestDTO, PaymentMethod.class);
-        paymentMethod.setPayCard(payCardRepository.getPayCardById(paymentMethodRequestDTO.getPayCard()));
         paymentMethodRepository.save(paymentMethod);
         var response = modelMapper.map(paymentMethod, PaymentMethodResponseDTO.class);
 
@@ -56,7 +52,6 @@ public class PaymentMethodService implements IPaymentMethodService {
         }else {
             PaymentMethod paymentMethod = paymentMethodOptional.get();
             modelMapper.map(paymentMethodRequestDTO, paymentMethod);
-            paymentMethod.setPayCard(payCardRepository.getPayCardById(paymentMethodRequestDTO.getPayCard()));
             paymentMethodRepository.save(paymentMethod);
             PaymentMethodResponseDTO response = modelMapper.map(paymentMethod, PaymentMethodResponseDTO.class);
             return new ApiResponse<>("PaymentMethod updated successfully", Estatus.SUCCESS, response);

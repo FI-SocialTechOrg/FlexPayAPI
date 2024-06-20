@@ -18,5 +18,4 @@ public class PaymentMethodRequestDTO {
     private LocalDate datePay;
     private double mount;
     private String cardNumber;
-    private int payCard;
 }
