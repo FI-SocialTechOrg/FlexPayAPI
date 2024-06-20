@@ -14,8 +14,8 @@ public class SwaggerConfig {
     public OpenAPI openApiConfig() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Servifix API")
-                        .description("Servifix API with spring security")
+                        .title("FlexPay API")
+                        .description("FlexPay API with spring security")
                         .version("1.0.0")
                 )
                 .addSecurityItem(new SecurityRequirement()
