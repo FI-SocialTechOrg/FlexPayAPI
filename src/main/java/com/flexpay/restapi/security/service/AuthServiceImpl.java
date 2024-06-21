@@ -46,6 +46,10 @@ public class AuthServiceImpl implements AuthService{
         if (accountRepository.existsByEmail(request.getEmail())) {
             throw new CustomException(HttpStatus.CONFLICT, "The email '" + request.getEmail() + "' is already registered, please try another one");
         }
+        //si el User Name ya está registrado
+        if (accountRepository.existsByUserName(request.getUserName())) {
+            throw new CustomException(HttpStatus.CONFLICT, "The username '" + request.getUserName() + "' is already registered, please try another one");
+        }
 
         //si no existe, lo registra
         var account = Account.builder()
