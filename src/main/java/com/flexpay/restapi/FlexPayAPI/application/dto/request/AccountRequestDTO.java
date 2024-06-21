@@ -8,7 +8,6 @@ import lombok.*;
 @Builder
 public class AccountRequestDTO {
     private String email;
-    private String password;
     private String userName;
     private int role;
 }
