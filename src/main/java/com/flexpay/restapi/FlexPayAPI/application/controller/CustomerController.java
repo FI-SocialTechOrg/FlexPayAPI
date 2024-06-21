@@ -30,6 +30,13 @@ public class CustomerController {
         return new ResponseEntity<>(response, response.getStatus() == Estatus.SUCCESS ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
+    @Operation(summary = "get a customer by account id")
+    @GetMapping("/customer/account/{id}")
+    public ResponseEntity<ApiResponse<CustomerResponseDTO>> getCustomerByAccountId(@PathVariable("id") int id){
+        ApiResponse<CustomerResponseDTO> response = customerService.getCustomerByAccountId(id);
+        return new ResponseEntity<>(response, response.getStatus() == Estatus.SUCCESS ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
+
     @Operation(summary = "get all customers")
     @GetMapping("/customer")
     public ResponseEntity<ApiResponse<List<CustomerResponseDTO>>> getAllCustomers() {

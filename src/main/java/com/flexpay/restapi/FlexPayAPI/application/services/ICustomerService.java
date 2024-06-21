@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface ICustomerService {
     ApiResponse<CustomerResponseDTO> getCustomerById(int id);
+    ApiResponse<CustomerResponseDTO> getCustomerByAccountId(int id);
     ApiResponse<List<CustomerResponseDTO>> getAllCustomers();
     ApiResponse<CustomerResponseDTO> createCustomer(CustomerRequestDTO customerRequestDTO);
     ApiResponse<CustomerResponseDTO> updateCustomer(int id, CustomerRequestDTO customerRequestDTO);

@@ -43,6 +43,18 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
+    public ApiResponse<CustomerResponseDTO> getCustomerByAccountId(int id) {
+        Optional<Customer> customerOptional = customerRepository.getCustomerByAccount_Id(id);
+        if (customerOptional.isPresent()) {
+            Customer customer = customerOptional.get();
+            CustomerResponseDTO responseDTO = modelMapper.map(customer, CustomerResponseDTO.class);
+            return new ApiResponse<>("Customer fetched successfully", Estatus.SUCCESS, responseDTO);
+        } else {
+            return new ApiResponse<>("Customer not found", Estatus.ERROR, null);
+        }
+    }
+
+    @Override
     public ApiResponse<List<CustomerResponseDTO>> getAllCustomers() {
         List<Customer> customerList = (List<Customer>) customerRepository.findAll();
         List<CustomerResponseDTO> customerResponseDTOList = customerList.stream()
