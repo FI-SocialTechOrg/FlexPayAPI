@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface IStoreService {
     ApiResponse<StoreResponseDTO> getStoreById(int id);
+    ApiResponse<StoreResponseDTO> getStoreByAccountId(int id);
     ApiResponse<List<StoreResponseDTO>> getAllStores();
     ApiResponse<StoreResponseDTO> createStore(StoreRequestDTO storeRequestDTO);
     ApiResponse<StoreResponseDTO> updateStore(int id, StoreRequestDTO storeRequestDTO);
