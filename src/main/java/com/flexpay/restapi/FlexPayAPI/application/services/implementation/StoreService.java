@@ -44,6 +44,17 @@ public class StoreService implements IStoreService {
         }
     }
 
+    @Override
+    public ApiResponse<StoreResponseDTO> getStoreByAccountId(int id) {
+        Optional<Store> storeOptional = storeRepository.getStoreByAccount_Id(id);
+        if (storeOptional.isPresent()){
+            Store store = storeOptional.get();
+            StoreResponseDTO responseDTO = modelMapper.map(store, StoreResponseDTO.class);
+            return new ApiResponse<>("Store fetched successfully", Estatus.SUCCESS, responseDTO);
+        }else {
+            return new ApiResponse<>("Store not found", Estatus.ERROR, null);
+        }
+    }
 
     @Override
     public ApiResponse<List<StoreResponseDTO>> getAllStores() {

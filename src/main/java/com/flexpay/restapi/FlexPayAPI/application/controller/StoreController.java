@@ -32,6 +32,12 @@ public class StoreController {
         return new ResponseEntity<>(response, response.getStatus() == Estatus.SUCCESS ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
+    @Operation(summary = "get a store by account id")
+    @GetMapping("/store/account/{id}")
+    public ResponseEntity<ApiResponse<StoreResponseDTO>> getStoreByAccountId(@PathVariable("id") int id) {
+        ApiResponse<StoreResponseDTO> response = storeService.getStoreByAccountId(id);
+        return new ResponseEntity<>(response, response.getStatus() == Estatus.SUCCESS ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
 
     @Operation(summary = "get all stores")
     @GetMapping("/store")
