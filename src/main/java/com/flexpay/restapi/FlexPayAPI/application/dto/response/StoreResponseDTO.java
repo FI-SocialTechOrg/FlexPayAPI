@@ -16,6 +16,7 @@ public class StoreResponseDTO {
     private String dni;
     private String ruc;
     private String companyName;
+    private String imageUrl;
     private AccountResponseDTO account;
     private List<ProductStockResponseDTO> productStocks;
 }

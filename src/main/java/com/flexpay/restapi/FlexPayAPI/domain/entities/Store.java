@@ -36,6 +36,9 @@ public class Store {
     @Column(name = "company_name", length = 150, nullable = false)
     private String companyName;
 
+    @Column(name = "image_url", length = 500, nullable = false)
+    private String imageUrl;
+
     @Setter
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id", nullable = false)
