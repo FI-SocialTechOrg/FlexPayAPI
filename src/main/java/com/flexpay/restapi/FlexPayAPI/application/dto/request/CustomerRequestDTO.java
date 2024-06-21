@@ -17,5 +17,6 @@ public class CustomerRequestDTO {
     private LocalDate birthday;
     private String dni;
     private String photoUrl;
+    private int creditTerm;
     private int account;
 }

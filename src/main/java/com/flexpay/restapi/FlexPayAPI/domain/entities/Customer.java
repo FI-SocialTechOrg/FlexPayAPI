@@ -39,6 +39,9 @@ public class Customer {
     @Column(name = "photo_url", length = 500, nullable = false)
     private String photoUrl;
 
+    @Column(name = "credit_term", nullable = false)
+    private int creditTerm;
+
     @Setter
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id", nullable = false)

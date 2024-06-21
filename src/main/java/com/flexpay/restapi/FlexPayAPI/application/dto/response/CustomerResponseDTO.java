@@ -20,5 +20,6 @@ public class CustomerResponseDTO {
     private LocalDate birthday;
     private String dni;
     private String photoUrl;
+    private int creditTerm;
     private AccountResponseDTO account;
 }
