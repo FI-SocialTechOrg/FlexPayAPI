@@ -2,6 +2,7 @@ package com.flexpay.restapi.security.model.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,6 +25,6 @@ public class RegisterRequestDto {
     @Size(min = 3, message = "the password must be at least 3 characters long")
     private String password;
 
-    @NotEmpty(message = "Role is required")
-    private int role;
+    @NotNull(message = "Role is required")
+    private Integer role;
 }
