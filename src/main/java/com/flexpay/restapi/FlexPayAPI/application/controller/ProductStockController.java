@@ -2,7 +2,6 @@ package com.flexpay.restapi.FlexPayAPI.application.controller;
 
 import com.flexpay.restapi.FlexPayAPI.application.dto.request.ProductStockRequestDTO;
 import com.flexpay.restapi.FlexPayAPI.application.dto.response.ProductStockResponseDTO;
-import com.flexpay.restapi.FlexPayAPI.application.dto.response.ProductStockWithStoreResponseDTO;
 import com.flexpay.restapi.FlexPayAPI.application.services.implementation.ProductStockService;
 import com.flexpay.restapi.shared.model.dto.response.ApiResponse;
 import com.flexpay.restapi.shared.model.enums.Estatus;
