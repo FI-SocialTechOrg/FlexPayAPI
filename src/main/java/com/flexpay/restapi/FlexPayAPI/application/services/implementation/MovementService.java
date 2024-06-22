@@ -45,8 +45,8 @@ public class MovementService implements IMovementService {
     @Override
     public ApiResponse<MovementResponseDTO> createMovement(MovementRequestDTO movementRequestDTO) {
         var movement = modelMapper.map(movementRequestDTO, Movement.class);
-        movement.setCreditCard(creditCardRepository.getCreditCardById(movementRequestDTO.getCreditCard()));
-        movement.setCreditConfiguration(creditConfigurationRepository.getCreditConfigurationById(movementRequestDTO.getCreditConfiguration()));
+        movement.setCreditCard(creditCardRepository.getCreditCardById(movementRequestDTO.getCreditCardId()));
+        movement.setCreditConfiguration(creditConfigurationRepository.getCreditConfigurationById(movementRequestDTO.getCreditConfigurationId()));
         movementRepository.save(movement);
         var response = modelMapper.map(movement, MovementResponseDTO.class);
 
@@ -62,8 +62,8 @@ public class MovementService implements IMovementService {
         }else {
             Movement movement = movementOptional.get();
             modelMapper.map(movementRequestDTO, movement);
-            movement.setCreditCard(creditCardRepository.getCreditCardById(movementRequestDTO.getCreditCard()));
-            movement.setCreditConfiguration(creditConfigurationRepository.getCreditConfigurationById(movementRequestDTO.getCreditConfiguration()));
+            movement.setCreditCard(creditCardRepository.getCreditCardById(movementRequestDTO.getCreditCardId()));
+            movement.setCreditConfiguration(creditConfigurationRepository.getCreditConfigurationById(movementRequestDTO.getCreditConfigurationId()));
             movementRepository.save(movement);
             MovementResponseDTO response = modelMapper.map(movement, MovementResponseDTO.class);
             return new ApiResponse<>("Movement updated successfully", Estatus.SUCCESS, response);

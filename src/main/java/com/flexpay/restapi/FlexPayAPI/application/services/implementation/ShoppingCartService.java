@@ -48,7 +48,7 @@ public class ShoppingCartService implements IShoppingCartService {
     public ApiResponse<ShoppingCartResponseDTO> createShoppingCart(ShoppingCartRequestDTO shoppingCartRequestDTO) {
         var shoppingCart = modelMapper.map(shoppingCartRequestDTO, ShoppingCart.class);
         shoppingCart.setCustomer(customerRepository.getCustomerById(shoppingCartRequestDTO.getCustomer()));
-        shoppingCart.setShoppingState(shoppingStateRepository.getShoppingStateById(shoppingCartRequestDTO.getShoppingState()));
+        shoppingCart.setShoppingState(shoppingStateRepository.getShoppingStateById(shoppingCartRequestDTO.getShoppingStateId()));
         shoppingCartRepository.save(shoppingCart);
         var response = modelMapper.map(shoppingCart, ShoppingCartResponseDTO.class);
 
@@ -65,7 +65,7 @@ public class ShoppingCartService implements IShoppingCartService {
             ShoppingCart shoppingCart = shoppingCartOptional.get();
             modelMapper.map(shoppingCartRequestDTO, shoppingCart);
             shoppingCart.setCustomer(customerRepository.getCustomerById(shoppingCartRequestDTO.getCustomer()));
-            shoppingCart.setShoppingState(shoppingStateRepository.getShoppingStateById(shoppingCartRequestDTO.getShoppingState()));
+            shoppingCart.setShoppingState(shoppingStateRepository.getShoppingStateById(shoppingCartRequestDTO.getShoppingStateId()));
             shoppingCartRepository.save(shoppingCart);
             ShoppingCartResponseDTO response = modelMapper.map(shoppingCart, ShoppingCartResponseDTO.class);
             return new ApiResponse<>("ShoppingCart updated successfully", Estatus.SUCCESS, response);

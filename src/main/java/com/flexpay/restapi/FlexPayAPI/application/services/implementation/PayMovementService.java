@@ -42,8 +42,8 @@ public class PayMovementService implements IPayMovementService {
     @Override
     public ApiResponse<PayMovementResponseDTO> createPayMovement(PayMovementRequestDTO payMovementRequestDTO) {
         var payMovement = modelMapper.map(payMovementRequestDTO, PayMovement.class);
-        payMovement.setMovement(movementRepository.getMovementById(payMovementRequestDTO.getMovement()));
-        payMovement.setPaymentMethod(paymentMethodRepository.getPaymentMethodById(payMovementRequestDTO.getPaymentMethod()));
+        payMovement.setMovement(movementRepository.getMovementById(payMovementRequestDTO.getMovementId()));
+        payMovement.setPaymentMethod(paymentMethodRepository.getPaymentMethodById(payMovementRequestDTO.getPaymentMethodId()));
         payMovementRepository.save(payMovement);
         var response = modelMapper.map(payMovement, PayMovementResponseDTO.class);
 
@@ -59,8 +59,8 @@ public class PayMovementService implements IPayMovementService {
         }else {
             PayMovement payMovement = payMovementOptional.get();
             modelMapper.map(payMovementRequestDTO, payMovement);
-            payMovement.setMovement(movementRepository.getMovementById(payMovementRequestDTO.getMovement()));
-            payMovement.setPaymentMethod(paymentMethodRepository.getPaymentMethodById(payMovementRequestDTO.getPaymentMethod()));
+            payMovement.setMovement(movementRepository.getMovementById(payMovementRequestDTO.getMovementId()));
+            payMovement.setPaymentMethod(paymentMethodRepository.getPaymentMethodById(payMovementRequestDTO.getPaymentMethodId()));
             payMovementRepository.save(payMovement);
             PayMovementResponseDTO response = modelMapper.map(payMovement, PayMovementResponseDTO.class);
             return new ApiResponse<>("PayMovement updated successfully", Estatus.SUCCESS, response);

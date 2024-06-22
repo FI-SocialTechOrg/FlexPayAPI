@@ -69,7 +69,7 @@ public class StoreService implements IStoreService {
     @Override
     public ApiResponse<StoreResponseDTO> createStore(StoreRequestDTO storeRequestDTO) {
         var store = modelMapper.map(storeRequestDTO, Store.class);
-        store.setAccount(accountRepository.getAccountById(storeRequestDTO.getAccount()));
+        store.setAccount(accountRepository.getAccountById(storeRequestDTO.getAccountId()));
         storeRepository.save(store);
         var response = modelMapper.map(store, StoreResponseDTO.class);
 
@@ -85,7 +85,7 @@ public class StoreService implements IStoreService {
         }else {
             Store store = storeOptional.get();
             modelMapper.map(storeRequestDTO, store);
-            store.setAccount(accountRepository.getAccountById(storeRequestDTO.getAccount()));
+            store.setAccount(accountRepository.getAccountById(storeRequestDTO.getAccountId()));
             storeRepository.save(store);
             StoreResponseDTO response = modelMapper.map(store, StoreResponseDTO.class);
             return new ApiResponse<>("Store updated successfully", Estatus.SUCCESS, response);

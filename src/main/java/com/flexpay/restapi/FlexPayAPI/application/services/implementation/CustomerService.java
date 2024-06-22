@@ -67,7 +67,7 @@ public class CustomerService implements ICustomerService {
     @Override
     public ApiResponse<CustomerResponseDTO> createCustomer(CustomerRequestDTO customerRequestDTO) {
         var customer = modelMapper.map(customerRequestDTO, Customer.class);
-        customer.setAccount(accountRepository.getAccountById(customerRequestDTO.getAccount()));
+        customer.setAccount(accountRepository.getAccountById(customerRequestDTO.getAccountId()));
         customerRepository.save(customer);
         var response = modelMapper.map(customer, CustomerResponseDTO.class);
         return new ApiResponse<>("Customer created successfully", Estatus.SUCCESS, response);
@@ -82,7 +82,7 @@ public class CustomerService implements ICustomerService {
         }else {
             Customer customer = customerOptional.get();
             modelMapper.map(customerRequestDTO, customer);
-            customer.setAccount(accountRepository.getAccountById(customerRequestDTO.getAccount()));
+            customer.setAccount(accountRepository.getAccountById(customerRequestDTO.getAccountId()));
             customerRepository.save(customer);
             CustomerResponseDTO response = modelMapper.map(customer, CustomerResponseDTO.class);
             return new ApiResponse<>("Store updated successfully", Estatus.SUCCESS, response);

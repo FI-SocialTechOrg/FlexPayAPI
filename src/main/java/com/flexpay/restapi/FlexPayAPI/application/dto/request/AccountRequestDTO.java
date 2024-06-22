@@ -9,5 +9,5 @@ import lombok.*;
 public class AccountRequestDTO {
     private String email;
     private String userName;
-    private int role;
+    private int roleId;
 }

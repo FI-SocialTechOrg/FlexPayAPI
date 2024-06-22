@@ -18,5 +18,5 @@ public class CustomerRequestDTO {
     private String dni;
     private String photoUrl;
     private int creditTerm;
-    private int account;
+    private int accountId;
 }

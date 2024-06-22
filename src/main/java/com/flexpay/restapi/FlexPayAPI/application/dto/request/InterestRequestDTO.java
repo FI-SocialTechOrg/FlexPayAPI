@@ -8,7 +8,7 @@ import lombok.*;
 @Builder
 public class InterestRequestDTO {
     private double rate;
-    private int creditConfiguration;
-    private int payInterest;
-    private int typeInterest;
+    private int creditConfigurationId;
+    private int payInterestId;
+    private int typeInterestId;
 }

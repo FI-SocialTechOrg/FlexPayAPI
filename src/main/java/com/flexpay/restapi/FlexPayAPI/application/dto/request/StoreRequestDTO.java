@@ -19,5 +19,5 @@ public class StoreRequestDTO {
     private String ruc;
     private String companyName;
     private String imageUrl;
-    private int account;
+    private int accountId;
 }

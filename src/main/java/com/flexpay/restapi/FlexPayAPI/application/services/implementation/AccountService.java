@@ -39,7 +39,7 @@ public class AccountService implements IAccountService {
     @Override
     public ApiResponse<AccountResponseDTO> createAccount(AccountRequestDTO accountRequestDTO) {
         var account = modelMapper.map(accountRequestDTO, Account.class);
-        account.setRole(roleRepository.getRoleById(accountRequestDTO.getRole()));
+        account.setRole(roleRepository.getRoleById(accountRequestDTO.getRoleId()));
         accountRepository.save(account);
         var response = modelMapper.map(account, AccountResponseDTO.class);
 
@@ -55,7 +55,7 @@ public class AccountService implements IAccountService {
         }else {
             Account account = accountOptional.get();
             modelMapper.map(accountRequestDTO, account);
-            account.setRole(roleRepository.getRoleById(accountRequestDTO.getRole()));
+            account.setRole(roleRepository.getRoleById(accountRequestDTO.getRoleId()));
             accountRepository.save(account);
             AccountResponseDTO response = modelMapper.map(account, AccountResponseDTO.class);
             return new ApiResponse<>("Account updated successfully", Estatus.SUCCESS, response);

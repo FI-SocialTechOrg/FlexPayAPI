@@ -14,6 +14,6 @@ public class PayMovementRequestDTO {
     private double payAmount;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateLimit;
-    private int paymentMethod;
-    private int movement;
+    private int paymentMethodId;
+    private int movementId;
 }

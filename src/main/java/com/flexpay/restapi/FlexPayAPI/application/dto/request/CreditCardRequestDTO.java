@@ -16,6 +16,6 @@ public class CreditCardRequestDTO {
     private double purchase;
     private double purchaseInterest;
     private double debt;
-    private int stateCard;
-    private int shoppingCart;
+    private int stateCardId;
+    private int shoppingCartId;
 }
