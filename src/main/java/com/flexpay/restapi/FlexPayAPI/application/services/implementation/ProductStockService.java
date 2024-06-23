@@ -8,6 +8,7 @@ import com.flexpay.restapi.FlexPayAPI.infraestructure.repositories.IProductRepos
 import com.flexpay.restapi.FlexPayAPI.infraestructure.repositories.IProductStockRepository;
 import com.flexpay.restapi.FlexPayAPI.infraestructure.repositories.IStateStockRepository;
 import com.flexpay.restapi.FlexPayAPI.infraestructure.repositories.IStoreRepository;
+import com.flexpay.restapi.shared.exception.ValidationException;
 import com.flexpay.restapi.shared.model.dto.response.ApiResponse;
 import com.flexpay.restapi.shared.model.enums.Estatus;
 import org.modelmapper.ModelMapper;
@@ -56,6 +57,7 @@ public class ProductStockService implements IProductStockService {
     @Override
     public ApiResponse<ProductStockResponseDTO> createProductStock(ProductStockRequestDTO productStockRequestDTO) {
         var productStock = modelMapper.map(productStockRequestDTO, ProductStock.class);
+        validateProductStock(productStockRequestDTO);
         productStock.setProduct(productRepository.getProductById(productStockRequestDTO.getProduct()));
         productStock.setStore(storeRepository.getStoreById(productStockRequestDTO.getStore()));
         productStock.setStateStock(stateStockRepository.getStateStockById(productStockRequestDTO.getStateStock()));
@@ -88,5 +90,17 @@ public class ProductStockService implements IProductStockService {
             productStockRepository.deleteById(id);
             return new ApiResponse<>("Store deleted successfully", Estatus.SUCCESS, null);
         }
+    }
+
+    private void validateProductStock(ProductStockRequestDTO productStockRequestDTO){
+        if (isExistsProductStockByStoreAndProduct(productStockRequestDTO.getStore(), productStockRequestDTO.getProduct())) {
+            throw new ValidationException("ProductStock already exists for this store and product");
+        }
+    }
+
+
+
+    private boolean isExistsProductStockByStoreAndProduct(int storeId, int productId){
+        return productStockRepository.existsByStore_IdAndProduct_Id(storeId, productId);
     }
 }
