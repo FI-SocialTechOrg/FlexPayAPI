@@ -33,7 +33,7 @@ public class ProductStockController {
 
 
     @Operation(summary = "get all product stocks")
-    @GetMapping("/product-stock")
+    @GetMapping("/product-stocks")
     public ResponseEntity<ApiResponse<List<ProductStockResponseDTO>>> getAllProductStocks() {
         var res = productStockService.getAllProductStocks();
         return new ResponseEntity<>(res, HttpStatus.OK);

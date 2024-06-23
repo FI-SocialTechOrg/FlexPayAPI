@@ -40,7 +40,7 @@ public class StoreController {
     }
 
     @Operation(summary = "get all stores")
-    @GetMapping("/store")
+    @GetMapping("/stores")
     public ResponseEntity<ApiResponse<List<StoreResponseDTO>>> getAllStores() {
         var res = storeService.getAllStores();
         return new ResponseEntity<>(res, HttpStatus.OK);

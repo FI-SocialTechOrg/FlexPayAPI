@@ -38,7 +38,7 @@ public class CustomerController {
     }
 
     @Operation(summary = "get all customers")
-    @GetMapping("/customer")
+    @GetMapping("/customers")
     public ResponseEntity<ApiResponse<List<CustomerResponseDTO>>> getAllCustomers() {
         var res = customerService.getAllCustomers();
         return new ResponseEntity<>(res, HttpStatus.OK);

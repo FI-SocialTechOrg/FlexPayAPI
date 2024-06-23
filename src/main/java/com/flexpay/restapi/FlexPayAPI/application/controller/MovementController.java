@@ -29,7 +29,7 @@ public class MovementController {
     }
 
     @Operation(summary = "create a new movement")
-    @PostMapping("/movement")
+    @PostMapping("/movements")
     public ResponseEntity<ApiResponse<MovementResponseDTO>> createMovement(@RequestBody MovementRequestDTO movementRequestDTO) {
         var res = movementService.createMovement(movementRequestDTO);
         return new ResponseEntity<>(res, HttpStatus.CREATED);
