@@ -18,9 +18,6 @@ public class CreditCard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "max_credit", nullable = false)
-    private double maxCredit;
-
     @Column(name = "initial_credit", nullable = false)
     private double initialCredit;
 

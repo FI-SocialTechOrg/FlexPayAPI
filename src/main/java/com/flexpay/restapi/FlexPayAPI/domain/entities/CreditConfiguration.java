@@ -18,8 +18,8 @@ public class CreditConfiguration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "capitalization_period", nullable = false)
-    private int capitalizationPeriod;
+    @Column(name = "max_credit", nullable = false)
+    private double maxCredit;
 
     @Column(name = "monthly_fee", nullable = false)
     private double monthlyFee;

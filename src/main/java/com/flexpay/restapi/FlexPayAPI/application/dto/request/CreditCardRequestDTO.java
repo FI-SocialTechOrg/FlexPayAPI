@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class CreditCardRequestDTO {
-    private double maxCredit;
     private double initialCredit;
     private double balance;
     private double purchase;

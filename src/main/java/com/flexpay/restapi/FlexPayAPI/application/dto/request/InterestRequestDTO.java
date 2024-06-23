@@ -11,4 +11,5 @@ public class InterestRequestDTO {
     private int creditConfiguration;
     private int payInterest;
     private int typeInterest;
+    private int capitalizationPeriod;
 }

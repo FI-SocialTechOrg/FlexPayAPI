@@ -11,4 +11,5 @@ public class InterestResponseDTO {
     private double rate;
     private PayInterestResponseDTO payInterest;
     private TypeInterestResponseDTO typeInterest;
+    private CapitalizationPeriodResponseDTO capitalizationPeriod;
 }

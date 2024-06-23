@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class CreditConfigurationRequestDTO {
-    private int capitalizationPeriod;
+    private double maxCredit;
     private double monthlyFee;
     private double discount;
     private int gracePeriod;

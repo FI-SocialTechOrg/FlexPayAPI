@@ -34,4 +34,9 @@ public class Interest {
     @JoinColumn(name = "type_interest_id", nullable = false)
     private TypeInterest typeInterest;
 
+    @Setter
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "capitalization_period_id", nullable = false)
+    private CapitalizationPeriod capitalizationPeriod;
+
 }

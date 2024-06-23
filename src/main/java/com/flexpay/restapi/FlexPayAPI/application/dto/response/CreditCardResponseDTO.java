@@ -10,7 +10,6 @@ import java.util.List;
 @Builder
 public class CreditCardResponseDTO {
     private int id;
-    private double maxCredit;
     private double initialCredit;
     private double balance;
     private double purchase;
