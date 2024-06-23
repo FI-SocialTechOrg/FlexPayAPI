@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class ShoppingStockResponseDTO {
     private int id;
     private int quantity;
-    private ProductStockResponseDTO productStock;
+    private ProductStockWithStoreResponseDTO productStock;
 }

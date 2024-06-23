@@ -18,5 +18,5 @@ public class StoreResponseDTO {
     private String companyName;
     private String imageUrl;
     private AccountResponseDTO account;
-    private List<ProductStockWithResponseDTO> productStocks;
+    private List<ProductStockResponseDTO> productStocks;
 }

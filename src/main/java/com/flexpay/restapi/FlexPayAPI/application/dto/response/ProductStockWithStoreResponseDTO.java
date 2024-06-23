@@ -9,10 +9,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProductStockWithResponseDTO {
+public class ProductStockWithStoreResponseDTO {
+    // This class is a DTO that represents the response of a product stock with store
     private int id;
     private double price;
     private int mountStock;
     private ProductResponseDTO product;
     private StateStockResponseDTO stateStock;
+    private StoreWithoutProductStockResponseDTO store;
 }
