@@ -28,6 +28,13 @@ public class ShoppingCartController {
         return new ResponseEntity<>(response, response.getStatus() == Estatus.SUCCESS ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
+    @Operation(summary = "get a shopping cart by account id")
+    @GetMapping("/shopping-cart/customer/account/{id}")
+    public ResponseEntity<ApiResponse<ShoppingCartResponseDTO>> getShoppingCartByAccountId(@PathVariable("id") int id) {
+        ApiResponse<ShoppingCartResponseDTO> response = shoppingCartService.getShoppingCartByAccountId(id);
+        return new ResponseEntity<>(response, response.getStatus() == Estatus.SUCCESS ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
+
     @Operation(summary = "create a new shopping cart")
     @PostMapping("/shopping-cart")
     public ResponseEntity<ApiResponse<ShoppingCartResponseDTO>> createShoppingCart(@RequestBody ShoppingCartRequestDTO shoppingCartRequestDTO) {

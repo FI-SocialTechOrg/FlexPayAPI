@@ -28,6 +28,20 @@ public class CreditConfigurationController {
         return new ResponseEntity<>(response, response.getStatus() == Estatus.SUCCESS ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
+    @Operation(summary = "get a credit configuration by account id")
+    @GetMapping("/credit-configuration/store/account/{id}")
+    public ResponseEntity<ApiResponse<CreditConfigurationResponseDTO>> getCreditConfigurationByAccountId(@PathVariable("id") int id) {
+        ApiResponse<CreditConfigurationResponseDTO> response = creditConfigurationService.getCreditConfigurationByAccountId(id);
+        return new ResponseEntity<>(response, response.getStatus() == Estatus.SUCCESS ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
+
+    @Operation(summary = "get a credit configuration by store id")
+    @GetMapping("/credit-configuration/store/{id}")
+    public ResponseEntity<ApiResponse<CreditConfigurationResponseDTO>> getCreditConfigurationByStoreId(@PathVariable("id") int id) {
+        ApiResponse<CreditConfigurationResponseDTO> response = creditConfigurationService.getCreditConfigurationByStoreId(id);
+        return new ResponseEntity<>(response, response.getStatus() == Estatus.SUCCESS ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
+
     @Operation(summary = "create a new credit configuration")
     @PostMapping("/credit-configuration")
     public ResponseEntity<ApiResponse<CreditConfigurationResponseDTO>> createCreditConfiguration(@RequestBody CreditConfigurationRequestDTO creditConfigurationRequestDTO) {

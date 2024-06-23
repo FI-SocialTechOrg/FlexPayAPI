@@ -38,6 +38,30 @@ public class CreditConfigurationService implements ICreditConfigurationService {
     }
 
     @Override
+    public ApiResponse<CreditConfigurationResponseDTO> getCreditConfigurationByAccountId(int accountId) {
+        Optional<CreditConfiguration> creditConfigurationOptional = creditConfigurationRepository.getCreditConfigurationByStore_Account_Id(accountId);
+        if (creditConfigurationOptional.isPresent()){
+            CreditConfiguration creditConfiguration = creditConfigurationOptional.get();
+            CreditConfigurationResponseDTO responseDTO = modelMapper.map(creditConfiguration, CreditConfigurationResponseDTO.class);
+            return new ApiResponse<>("Credit Configuration fetched successfully", Estatus.SUCCESS, responseDTO);
+        }else {
+            return new ApiResponse<>("Credit Configuration not found", Estatus.ERROR, null);
+        }
+    }
+
+    @Override
+    public ApiResponse<CreditConfigurationResponseDTO> getCreditConfigurationByStoreId(int storeId) {
+        Optional<CreditConfiguration> creditConfigurationOptional = creditConfigurationRepository.getCreditConfigurationByStore_Id(storeId);
+        if (creditConfigurationOptional.isPresent()){
+            CreditConfiguration creditConfiguration = creditConfigurationOptional.get();
+            CreditConfigurationResponseDTO responseDTO = modelMapper.map(creditConfiguration, CreditConfigurationResponseDTO.class);
+            return new ApiResponse<>("Credit Configuration fetched successfully", Estatus.SUCCESS, responseDTO);
+        }else {
+            return new ApiResponse<>("Credit Configuration not found", Estatus.ERROR, null);
+        }
+    }
+
+    @Override
     public ApiResponse<CreditConfigurationResponseDTO> createCreditConfiguration(CreditConfigurationRequestDTO creditConfigurationRequestDTO) {
         var creditConfiguration = modelMapper.map(creditConfigurationRequestDTO, CreditConfiguration.class);
         creditConfiguration.setStore(storeRepository.getStoreById(creditConfigurationRequestDTO.getStore()));

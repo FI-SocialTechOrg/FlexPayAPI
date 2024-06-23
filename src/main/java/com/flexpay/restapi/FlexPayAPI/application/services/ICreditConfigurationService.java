@@ -6,6 +6,8 @@ import com.flexpay.restapi.shared.model.dto.response.ApiResponse;
 
 public interface ICreditConfigurationService {
     ApiResponse<CreditConfigurationResponseDTO> getCreditConfigurationById(int id);
+    ApiResponse<CreditConfigurationResponseDTO> getCreditConfigurationByAccountId(int accountId);
+    ApiResponse<CreditConfigurationResponseDTO> getCreditConfigurationByStoreId(int storeId);
     ApiResponse<CreditConfigurationResponseDTO> createCreditConfiguration(CreditConfigurationRequestDTO creditConfigurationRequestDTO);
     ApiResponse<CreditConfigurationResponseDTO> updateCreditConfiguration(int id, CreditConfigurationRequestDTO creditConfigurationRequestDTO);
     ApiResponse<Void> deleteCreditConfiguration(int id);

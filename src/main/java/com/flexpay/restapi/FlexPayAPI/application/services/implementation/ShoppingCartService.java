@@ -45,6 +45,18 @@ public class ShoppingCartService implements IShoppingCartService {
     }
 
     @Override
+    public ApiResponse<ShoppingCartResponseDTO> getShoppingCartByAccountId(int accountId) {
+        Optional<ShoppingCart> shoppingCartOptional = shoppingCartRepository.getShoppingCartByCustomer_Account_Id(accountId);
+        if (shoppingCartOptional.isPresent()){
+            ShoppingCart shoppingCart = shoppingCartOptional.get();
+            ShoppingCartResponseDTO responseDTO = modelMapper.map(shoppingCart, ShoppingCartResponseDTO.class);
+            return new ApiResponse<>("ShoppingCart fetched successfully", Estatus.SUCCESS, responseDTO);
+        }else {
+            return new ApiResponse<>("ShoppingCart not found", Estatus.ERROR, null);
+        }
+    }
+
+    @Override
     public ApiResponse<ShoppingCartResponseDTO> createShoppingCart(ShoppingCartRequestDTO shoppingCartRequestDTO) {
         var shoppingCart = modelMapper.map(shoppingCartRequestDTO, ShoppingCart.class);
         shoppingCart.setCustomer(customerRepository.getCustomerById(shoppingCartRequestDTO.getCustomer()));
