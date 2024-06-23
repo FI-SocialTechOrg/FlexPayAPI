@@ -15,6 +15,6 @@ public class MovementRequestDTO {
     private LocalDate paymentDay;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateMovement;
-    private int creditCardId;
-    private int creditConfigurationId;
+    private int creditCard;
+    private int creditConfiguration;
 }

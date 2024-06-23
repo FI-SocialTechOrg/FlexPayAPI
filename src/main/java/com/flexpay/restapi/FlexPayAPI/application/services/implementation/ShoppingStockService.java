@@ -58,8 +58,8 @@ public class ShoppingStockService implements IShoppingStockService {
     @Override
     public ApiResponse<ShoppingStockResponseDTO> createShoppingStock(ShoppingStockRequestDTO shoppingStockRequestDTO) {
         var shoppingStock = modelMapper.map(shoppingStockRequestDTO, ShoppingStock.class);
-        shoppingStock.setProductStock(productStockRepository.getProductStockById(shoppingStockRequestDTO.getProductStockId()));
-        shoppingStock.setShoppingCart(shoppingCartRepository.getShoppingCartById(shoppingStockRequestDTO.getShoppingCartId()));
+        shoppingStock.setProductStock(productStockRepository.getProductStockById(shoppingStockRequestDTO.getProductStock()));
+        shoppingStock.setShoppingCart(shoppingCartRepository.getShoppingCartById(shoppingStockRequestDTO.getShoppingCart()));
         shoppingStockRepository.save(shoppingStock);
         var response = modelMapper.map(shoppingStock, ShoppingStockResponseDTO.class);
 
@@ -75,8 +75,8 @@ public class ShoppingStockService implements IShoppingStockService {
         } else {
             ShoppingStock shoppingStock = shoppingStockOptional.get();
             modelMapper.map(shoppingStockRequestDTO, shoppingStock);
-            shoppingStock.setProductStock(productStockRepository.getProductStockById(shoppingStockRequestDTO.getProductStockId()));
-            shoppingStock.setShoppingCart(shoppingCartRepository.getShoppingCartById(shoppingStockRequestDTO.getShoppingCartId()));
+            shoppingStock.setProductStock(productStockRepository.getProductStockById(shoppingStockRequestDTO.getProductStock()));
+            shoppingStock.setShoppingCart(shoppingCartRepository.getShoppingCartById(shoppingStockRequestDTO.getShoppingCart()));
             shoppingStockRepository.save(shoppingStock);
             ShoppingStockResponseDTO response = modelMapper.map(shoppingStock, ShoppingStockResponseDTO.class);
             return new ApiResponse<>("ShoppingStock updated successfully", Estatus.SUCCESS, response);

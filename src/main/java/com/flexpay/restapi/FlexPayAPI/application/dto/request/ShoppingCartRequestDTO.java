@@ -8,5 +8,5 @@ import lombok.*;
 public class ShoppingCartRequestDTO {
     private double total;
     private int customer;
-    private int shoppingStateId;
+    private int shoppingState;
 }

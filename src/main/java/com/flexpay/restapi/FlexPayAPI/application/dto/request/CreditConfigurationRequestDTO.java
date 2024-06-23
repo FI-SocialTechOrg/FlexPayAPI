@@ -13,5 +13,5 @@ public class CreditConfigurationRequestDTO {
     private double discount;
     private int gracePeriod;
     private int initialFee;
-    private int storeId;
+    private int store;
 }

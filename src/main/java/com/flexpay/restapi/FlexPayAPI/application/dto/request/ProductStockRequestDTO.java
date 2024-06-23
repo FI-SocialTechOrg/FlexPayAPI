@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class ProductStockRequestDTO {
     private double price;
     private int mountStock;
-    private int productId;
-    private int storeId;
-    private int stateStockId;
+    private int product;
+    private int store;
+    private int stateStock;
 }

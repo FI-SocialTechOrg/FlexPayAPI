@@ -40,7 +40,7 @@ public class CreditConfigurationService implements ICreditConfigurationService {
     @Override
     public ApiResponse<CreditConfigurationResponseDTO> createCreditConfiguration(CreditConfigurationRequestDTO creditConfigurationRequestDTO) {
         var creditConfiguration = modelMapper.map(creditConfigurationRequestDTO, CreditConfiguration.class);
-        creditConfiguration.setStore(storeRepository.getStoreById(creditConfigurationRequestDTO.getStoreId()));
+        creditConfiguration.setStore(storeRepository.getStoreById(creditConfigurationRequestDTO.getStore()));
         creditConfigurationRepository.save(creditConfiguration);
         var response = modelMapper.map(creditConfiguration, CreditConfigurationResponseDTO.class);
 
@@ -56,7 +56,7 @@ public class CreditConfigurationService implements ICreditConfigurationService {
         }else {
             CreditConfiguration creditConfiguration = creditConfigurationOptional.get();
             modelMapper.map(creditConfigurationRequestDTO, creditConfiguration);
-            creditConfiguration.setStore(storeRepository.getStoreById(creditConfigurationRequestDTO.getStoreId()));
+            creditConfiguration.setStore(storeRepository.getStoreById(creditConfigurationRequestDTO.getStore()));
             creditConfigurationRepository.save(creditConfiguration);
             CreditConfigurationResponseDTO response = modelMapper.map(creditConfiguration, CreditConfigurationResponseDTO.class);
             return new ApiResponse<>("Credit Configuration updated successfully", Estatus.SUCCESS, response);

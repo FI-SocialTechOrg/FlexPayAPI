@@ -57,9 +57,9 @@ public class ProductStockService implements IProductStockService {
     @Override
     public ApiResponse<ProductStockResponseDTO> createProductStock(ProductStockRequestDTO productStockRequestDTO) {
         var productStock = modelMapper.map(productStockRequestDTO, ProductStock.class);
-        productStock.setProduct(productRepository.getProductById(productStockRequestDTO.getProductId()));
-        productStock.setStore(storeRepository.getStoreById(productStockRequestDTO.getStoreId()));
-        productStock.setStateStock(stateStockRepository.getStateStockById(productStockRequestDTO.getStateStockId()));
+        productStock.setProduct(productRepository.getProductById(productStockRequestDTO.getProduct()));
+        productStock.setStore(storeRepository.getStoreById(productStockRequestDTO.getStore()));
+        productStock.setStateStock(stateStockRepository.getStateStockById(productStockRequestDTO.getStateStock()));
         productStockRepository.save(productStock);
         var response = modelMapper.map(productStock, ProductStockResponseDTO.class);
         return new ApiResponse<>("ProductStock created successfully", Estatus.SUCCESS, response);
@@ -70,9 +70,9 @@ public class ProductStockService implements IProductStockService {
         if (productStockOptional.isPresent()){
             ProductStock productStock = productStockOptional.get();
             modelMapper.map(productStockRequestDTO, productStock);
-            productStock.setProduct(productRepository.getProductById(productStockRequestDTO.getProductId()));
-            productStock.setStore(storeRepository.getStoreById(productStockRequestDTO.getStoreId()));
-            productStock.setStateStock(stateStockRepository.getStateStockById(productStockRequestDTO.getStateStockId()));
+            productStock.setProduct(productRepository.getProductById(productStockRequestDTO.getProduct()));
+            productStock.setStore(storeRepository.getStoreById(productStockRequestDTO.getStore()));
+            productStock.setStateStock(stateStockRepository.getStateStockById(productStockRequestDTO.getStateStock()));
             productStockRepository.save(productStock);
             ProductStockResponseDTO responseDTO = modelMapper.map(productStock, ProductStockResponseDTO.class);
             return new ApiResponse<>("ProductStock updated successfully", Estatus.SUCCESS, responseDTO);

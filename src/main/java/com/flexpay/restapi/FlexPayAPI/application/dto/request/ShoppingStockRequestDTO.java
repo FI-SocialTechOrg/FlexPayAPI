@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ShoppingStockRequestDTO {
     private int quantity;
-    private int productStockId;
-    private int shoppingCartId;
+    private int productStock;
+    private int shoppingCart;
 }

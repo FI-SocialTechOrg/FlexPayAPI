@@ -47,9 +47,9 @@ public class InterestService implements IInterestService {
     @Override
     public ApiResponse<InterestResponseDTO> createInterest(InterestRequestDTO interestRequestDTO) {
         var interest = modelMapper.map(interestRequestDTO, Interest.class);
-        interest.setCreditConfiguration(creditConfigurationRepository.getCreditConfigurationById(interestRequestDTO.getCreditConfigurationId()));
-        interest.setTypeInterest(typeInterestRepository.getTypeInterestById(interestRequestDTO.getTypeInterestId()));
-        interest.setPayInterest(payInterestRepository.getPayInterestById(interestRequestDTO.getPayInterestId()));
+        interest.setCreditConfiguration(creditConfigurationRepository.getCreditConfigurationById(interestRequestDTO.getCreditConfiguration()));
+        interest.setTypeInterest(typeInterestRepository.getTypeInterestById(interestRequestDTO.getTypeInterest()));
+        interest.setPayInterest(payInterestRepository.getPayInterestById(interestRequestDTO.getPayInterest()));
         interestRepository.save(interest);
         var response = modelMapper.map(interest, InterestResponseDTO.class);
 
@@ -62,9 +62,9 @@ public class InterestService implements IInterestService {
         if (interestOptional.isPresent()){
             Interest interest = interestOptional.get();
             modelMapper.map(interestRequestDTO, interest);
-            interest.setCreditConfiguration(creditConfigurationRepository.getCreditConfigurationById(interestRequestDTO.getCreditConfigurationId()));
-            interest.setTypeInterest(typeInterestRepository.getTypeInterestById(interestRequestDTO.getTypeInterestId()));
-            interest.setPayInterest(payInterestRepository.getPayInterestById(interestRequestDTO.getPayInterestId()));
+            interest.setCreditConfiguration(creditConfigurationRepository.getCreditConfigurationById(interestRequestDTO.getCreditConfiguration()));
+            interest.setTypeInterest(typeInterestRepository.getTypeInterestById(interestRequestDTO.getTypeInterest()));
+            interest.setPayInterest(payInterestRepository.getPayInterestById(interestRequestDTO.getPayInterest()));
             interestRepository.save(interest);
             InterestResponseDTO responseDTO = modelMapper.map(interest, InterestResponseDTO.class);
 

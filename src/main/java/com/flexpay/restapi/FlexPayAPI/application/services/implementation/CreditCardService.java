@@ -41,8 +41,8 @@ public class CreditCardService implements ICreditCardService {
     @Override
     public ApiResponse<CreditCardResponseDTO> createCreditCard(CreditCardRequestDTO creditCardRequestDTO) {
         var creditCard = modelMapper.map(creditCardRequestDTO, CreditCard.class);
-        creditCard.setStateCard(stateCardRepository.getStateCardById(creditCardRequestDTO.getStateCardId()));
-        creditCard.setShoppingCart(shoppingCartRepository.getShoppingCartById(creditCardRequestDTO.getShoppingCartId()));
+        creditCard.setStateCard(stateCardRepository.getStateCardById(creditCardRequestDTO.getStateCard()));
+        creditCard.setShoppingCart(shoppingCartRepository.getShoppingCartById(creditCardRequestDTO.getShoppingCart()));
         creditCardRepository.save(creditCard);
         var response = modelMapper.map(creditCard, CreditCardResponseDTO.class);
 
@@ -56,8 +56,8 @@ public class CreditCardService implements ICreditCardService {
         } else {
             CreditCard creditCard = creditCardOptional.get();
             modelMapper.map(creditCardRequestDTO, creditCard);
-            creditCard.setStateCard(stateCardRepository.getStateCardById(creditCardRequestDTO.getStateCardId()));
-            creditCard.setShoppingCart(shoppingCartRepository.getShoppingCartById(creditCardRequestDTO.getShoppingCartId()));
+            creditCard.setStateCard(stateCardRepository.getStateCardById(creditCardRequestDTO.getStateCard()));
+            creditCard.setShoppingCart(shoppingCartRepository.getShoppingCartById(creditCardRequestDTO.getShoppingCart()));
             creditCardRepository.save(creditCard);
             CreditCardResponseDTO response = modelMapper.map(creditCard, CreditCardResponseDTO.class);
             return new ApiResponse<>("Customer updated successfully", Estatus.SUCCESS, response);
