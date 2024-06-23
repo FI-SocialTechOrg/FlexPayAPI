@@ -17,6 +17,7 @@ public class CreditConfigurationResponseDTO {
     private double monthlyFee;
     private double discount;
     private int gracePeriod;
+    private int graceType;
     private int initialFee;
     private StoreWithoutProductStockResponseDTO store;
     private List<InterestResponseDTO> interests;

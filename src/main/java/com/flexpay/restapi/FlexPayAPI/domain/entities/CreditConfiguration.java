@@ -30,6 +30,9 @@ public class CreditConfiguration {
     @Column(name = "grace_period", nullable = false)
     private int gracePeriod;
 
+    @Column(name = "grace_type", nullable = false)
+    private int graceType;
+
     @Column(name = "initial_fee", nullable = false)
     private int initialFee;
 
