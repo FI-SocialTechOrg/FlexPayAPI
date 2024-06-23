@@ -2,7 +2,6 @@ package com.flexpay.restapi.FlexPayAPI.application.services.implementation;
 
 import com.flexpay.restapi.FlexPayAPI.application.dto.request.ProductStockRequestDTO;
 import com.flexpay.restapi.FlexPayAPI.application.dto.response.ProductStockResponseDTO;
-import com.flexpay.restapi.FlexPayAPI.application.dto.response.ProductStockWithStoreResponseDTO;
 import com.flexpay.restapi.FlexPayAPI.application.services.IProductStockService;
 import com.flexpay.restapi.FlexPayAPI.domain.entities.ProductStock;
 import com.flexpay.restapi.FlexPayAPI.infraestructure.repositories.IProductRepository;
